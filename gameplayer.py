@@ -1,22 +1,23 @@
 """
 Variables accessed and modified by the functions...
-direction: 0..3 for NESW
-xpos: 0..4
-ypos: 0..4
+  direction: 0..3 for NESW
+  xpos: 0..4
+  ypos: 0..4
 """
+
 direction = 0
 xpos = 0
 ypos = 0
 
-debug = 1
+debug = 0
 
 def move():
     '''
     Move one step in current direction. Prevent movement outside range 0..4
     '''
-
     global xpos, ypos
-    # Effect of moving 1 step in current direction on xpos and ypos :
+
+    # Effect of moving 1 step in each direction on xpos and ypos :
     xmap = { 0: xpos, 1: xpos+1, 2: xpos, 3: xpos-1 }
     ymap = { 0: ypos+1, 1: ypos, 2: ypos-1, 3: ypos }
 
@@ -61,11 +62,8 @@ to move, turn left and turn right respectively.
 '''
 
 def obey(commandstring):
-    # Loop over each character in commandstring.
-    for index in range(0, len(commandstring)):
-
-        # Get one-character substring and execute. PO says no validation required. 
-        char = commandstring[index]
+    # Loop over each character in commandstring and execute. PO says no validation required. 
+    for char in commandstring:
         if char == "M":
             move();
         elif char == "R":
@@ -78,7 +76,4 @@ def _RESET():
     (xpos, ypos, direction) = (0,0,0)
     if debug:
         print 'RESET : ' + getstate()
-
-#end.
-
 
