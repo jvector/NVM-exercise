@@ -3,8 +3,11 @@ NewVoiceMedia 'Interview Problem' code.
 
 Written for Python 2.7.9
 
-gameplayer.py       :- the source code
-test/test_player.py :- unit tests
+gameplayer.py            :- the initial source code written as a Python module
+test/test_gameplayer.py  :- unit tests
+
+GamePlayer.py            :- source code implemented as a Class
+test/test_GamePlayer.py  :- unit tests
 
 Tests run under pytest 3.2.3 (if pytest is not installed please run 'pip install -U pytest' first) :
 $ python -m pytest -v

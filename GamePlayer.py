@@ -12,16 +12,20 @@ Instance Variables accessed and modified by the methods...
 
 class gameplayer:
 
-    def __init__(self) :
+    def __init__(self,debugflag) :
         self.direction = 0
         self.xpos = 0
         self.ypos = 0
+        self.debug = debugflag
 
     def move(self):
         '''
         Move one step in current direction. Prevent movement outside range 0..4
         '''
         (xpos,ypos,direction) = (self.xpos,self.ypos,self.direction)      #for verbosity reduction
+
+        if self.debug:
+            print "pre-move x,y,d: {0},{1},{2}".format(xpos,ypos,direction)
 
         # Effect of moving 1 step in each direction on xpos and ypos :
         xmap = { 0: xpos, 1: xpos+1, 2: xpos, 3: xpos-1 }
@@ -33,6 +37,10 @@ class gameplayer:
 
         (xpos,ypos) = (min(xpos, 4), min(ypos,4))
         (xpos,ypos) = (max(xpos, 0), max(ypos,0))
+
+        (self.xpos,self.ypos,self.direction) = (xpos,ypos,direction)
+        if self.debug:
+            print "post-move x,y,d: {0},{1},{2}".format(self.xpos,self.ypos,self.direction)
 
     def turnleft(self):
         '''
